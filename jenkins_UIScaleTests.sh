@@ -42,7 +42,7 @@ USERNAME=tetter
 HOSTLIST="10.4.66.61 10.4.66.62"
 for HOSTNAME in $HOSTLIST; do
   (
-  echo "nyadav2014" > .pass
+  echo $SUPERPASSWORD > .pass
   echo "Running tests in worker VM ${HOSTNAME}"
   sshpass -f.pass rsync -avz --delete -e ssh  $WORKSPACE/ui ${USERNAME}@${HOSTNAME}:  &> ${HOSTNAME}.log
   sshpass -f.pass ssh -T -l ${USERNAME} ${HOSTNAME} "${SCRIPT}" &>> ${HOSTNAME}.log <<EOF
@@ -77,7 +77,7 @@ pwd
 for HOSTNAME in $HOSTLIST; do
 ( 
   rm -f ${HOSTNAME}_report.xml
-  #echo "nyadav2014" > .pass
+  #echo $SUPERPASSWORD > .pass
   sshpass -f.pass scp ${USERNAME}@${HOSTNAME}:/home/${USERNAME}/ui/spec/angular/tmp/reports/xmloutput*xml ./${HOSTNAME}_report.xml
   sed "s/^/${HOSTNAME} - /" ${HOSTNAME}.log 
   
