@@ -1,0 +1,35 @@
+vm62 ansible_ssh_host=b14-oraclelinux62-vlan732-eth000
+vm63 ansible_ssh_host=b14-oraclelinux63-vlan732-eth000
+vm64 ansible_ssh_host=b14-oraclelinux64-vlan732-eth000
+vm65 ansible_ssh_host=10.32.1.84
+vm66 ansible_ssh_host=10.32.1.250
+vm67 ansible_ssh_host=10.32.2.242
+vm68 ansible_ssh_host=10.32.1.165
+vm69 ansible_ssh_host=10.32.3.208
+vm70 ansible_ssh_host=10.32.0.248
+vm71 ansible_ssh_host=10.32.3.90
+vm73 ansible_ssh_host=10.32.0.226
+vm74 ansible_ssh_host=10.32.1.126
+vm75 ansible_ssh_host=10.32.2.82
+vm76 ansible_ssh_host=10.32.2.75
+[all:vars]
+ansible_connection=ssh
+ansible_user=tetter
+ansible_ssh_pass=TET_SUPERPASSWORD
+#ansible_python_interpreter=/usr/bin/python2.6
+
+[slaves]
+#vm62
+#vm63
+#vm64
+#vm65
+#vm66
+#vm67
+#vm68
+#vm69
+vm70
+vm71
+#vm73
+#vm74
+#vm75
+#vm76

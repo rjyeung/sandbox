@@ -1,0 +1,303 @@
+---
+- hosts: slaves
+
+  vars:
+    jenkins_user: tetter
+    jenkins_group: tetter
+    python_lib_url: https://artifacts.tet.wtf/api/pypi/pypi/simple
+    jumper_ip: 172.31.163.58
+
+  environment:
+    http_proxy: http://172.31.163.58:3128
+    https_proxy: http://172.31.163.58:3128
+
+#  become: yes
+
+  tasks:
+#    - name: test command
+#      command: whoami
+#      become: yes
+#    - name: test shell  
+#      shell: whoami
+#
+#    - name: 'kernel version from facts'
+#      debug:
+#       msg: '{{ansible_all_ipv4_addresses}} {{ansible_kernel}}'
+#      when: ansible_kernel is version('2.6.32-431','<')
+#
+#    - name: Install yum packages 
+#      yum: 
+#        name: ['cpio', 'sed', 'lsof', 'rpm', 'unzip']
+#      become: yes
+#
+#    - name: Install yum packages 
+#      yum: 
+#        name: ['gcc', 'make']
+#      become: yes
+#
+#    - name: Check if awk installed
+#      shell: awk --version
+#      register: test_cmd
+#      ignore_errors: yes
+#    - fail: msg="awk command return code is {{ test_cmd.rc }}" # it returns rc 1
+#      when: test_cmd.rc!=0
+#
+#    - name: Check if flock installed
+#      shell: flock --version
+#      register: test_cmd
+#      ignore_errors: yes
+#    - fail: msg="flock command return code is {{ test_cmd.rc }}" # it returns rc 1
+#      when: test_cmd.rc!=0
+#
+#    - name: Check if ps installed
+#      shell: ps --version
+#      register: test_cmd
+#      ignore_errors: yes
+#    - fail: msg="ps command return code is {{ test_cmd.rc }}" # it returns rc 1
+#      when: test_cmd.rc!=0
+#
+#    - name: Check if whoami installed
+#      shell: whoami --version
+#      register: test_cmd
+#      ignore_errors: yes
+#    - fail: msg="whoami command return code is {{ test_cmd.rc }}" # it returns rc 1
+#      when: test_cmd.rc!=0
+#
+#    - name: Check if shell installed
+#      shell: sh --version
+#      register: test_cmd
+#      ignore_errors: yes
+#    - fail: msg="sh command return code is {{ test_cmd.rc }}" # it returns rc 1
+#      when: test_cmd.rc!=0
+#
+#    - name: install the latest version of package
+#      yum:
+#        name: ['curl', 'dmidecode', 'openssl', 'ipset', 'iptables', 'iptables-ipv6']
+#        state: latest
+#      become: yes
+#
+###    - name: install the latest version of curl
+###      yum:
+###        name: curl
+###        state: latest
+###      become: yes
+###
+###    - name: install the latest version of dmidecode
+###      yum:
+###        name: dmidecode
+###        state: latest
+###      become: yes
+###
+###    - name: install the latest version of openssl
+###      yum:
+###        name: openssl
+###        state: latest
+###      become: yes
+###
+###    - name: install the latest version of ipset
+###      yum:
+###        name: ipset
+###        state: latest
+###      become: yes
+###
+###    - name: install the latest version of iptables
+###      yum:
+###        name: iptables
+###        state: latest
+###      become: yes
+###
+###    - name: install the latest version of ip6tables
+###      yum:
+###        name: iptables-ipv6
+###        state: latest
+###      become: yes
+########    Getting python2.7.6, and its require packages
+#    - name: Check if python is already at right version
+#      command: python --version
+#      register: python_version_result
+##     failed_when: python_version_result.stdout != 'Python 2.7.6'
+#
+#    - name: Download python file 
+#      get_url:
+#        url: https://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz
+#        dest: /home/tetter/
+#      when: python_version_result.stdout != 'Python 2.7.6'
+#
+#    - name: Unzip python file 
+#      unarchive:
+#        src: Python-2.7.6.tgz
+#        dest: /home/tetter/
+#        remote_src: yes
+#      when: python_version_result.stdout != 'Python 2.7.6'
+#
+#    - name: Install Python 2.7.6
+#      shell: "cd Python-2.7.6 && ./configure && sudo make install"
+#      environment:
+#        LDFLAGs: "-L/usr/local/openssl/lib"
+#        LDFLAGS: "-L/usr/local/openssl/lib"
+#        LD_LIBRARY_PATH: "/usr/local/openssl/lib"
+#        CPPFLAGS: "-I/usr/local/openssl/include -I/usr/local/openssl/include/openssl"
+#      when: python_version_result.stdout != 'Python 2.7.6'
+#
+#    - name: Softlink Python to Python 2.7.6
+#      shell: "mv /usr/bin/python /usr/bin/python2.6back && ln -s /usr/local/bin/python2.7 /usr/bin/python"
+#      become: yes
+#
+#    - name: Check if python is already at right version
+#      command: python --version
+#      register: python_version_result
+#      failed_when: python_version_result.stderr != 'Python 2.7.6'
+#     # sometimes, it's stdout, sometime stderr
+#
+#    - name: Update yum to use old python version
+#      lineinfile:
+#        path: /usr/bin/yum
+#        regexp: '^#!/usr/bin/python$'
+#        line: '#!/usr/bin/python2.6'
+#      become: yes
+#
+#    - name: install zlib-devel
+#      yum:
+#        name: zlib-devel
+#      become: yes
+#
+#    - name: install openssl-devel
+#      yum:
+#        name: openssl-devel
+#      become: yes
+#
+#    - name: ReInstall Python 2.7.6
+#      shell: "cd Python-2.7.6 && ./configure && sudo make install"
+
+
+
+
+###### Following to add python lib
+#    - name: Download get-pip.py file 
+#      get_url:
+#        url: https://bootstrap.pypa.io/get-pip.py
+##        dest: /home/tetter/Python-2.7.6
+#        dest: /home/tetter/
+#
+#    - name: Install Pip
+##      shell: "cd Python-2.7.6 && python get-pip.py"
+#      shell: "python get-pip.py"
+#      become: yes
+#
+#    - name: Install Pip packages netaddr
+#      #shell: "/usr/local/bin/pip install netaddr"
+#      shell: "/usr/bin/pip install netaddr"
+#      become: yes
+#
+#    - name: Install Pip packages scapy
+#      #shell: "/usr/local/bin/pip install scapy==2.3.3"
+#      shell: "/usr/bin/pip install scapy==2.3.3"
+#      become: yes
+#
+#
+####  Do the following to confirm 
+####  [tetter@b14-oraclelinux68-vlan732-eth000 Python-2.7.6]$ python
+####  Python 2.7.6 (default, Mar 22 2019, 01:25:58) 
+####  [GCC 4.4.7 20120313 (Red Hat 4.4.7-23.0.1)] on linux2
+####  Type "help", "copyright", "credits" or "license" for more information.
+####  >>> import ssl
+####  >>> print(ssl.OPENSSL_VERSION)
+####  OpenSSL 1.0.1e-fips 11 Feb 2013
+####  >>> import netaddr
+####  >>> import scapy
+####  >>> help (scapy)
+####  Ensure scapy is in version 2.3.3 or 2.3.1
+
+
+
+
+########    Getting h4qa1 user setup
+#    - name: add user and mod config
+#      command: useradd h4qa1 
+#      become: yes
+#
+#    - name: add user and mod config
+#      command: usermod -aG wheel h4qa1
+#      become: yes
+#
+#    - name: Mod  visudo
+#      lineinfile:
+#        path: /etc/sudoers
+#        state: present
+#        regexp: '^# %wheel	ALL=\(ALL\)	ALL'
+#        line: '%wheel	ALL=(ALL)	ALL'
+#        validate: 'visudo -cf %s'
+#      become: yes
+#
+#    - name: Mod = visudo wheel nopasswd
+#      lineinfile:
+#        path: /etc/sudoers
+#        state: present
+#        line: '%wheel	ALL=(ALL)	NOPASSWD: ALL'
+#        validate: 'visudo -cf %s'
+#      become: yes
+#
+#    - name: Create ssh and keys
+#      shell: "cd /home/h4qa1 && mkdir -p .ssh && chmod 700 .ssh && touch .ssh/authorized_keys && chmod 600 .ssh/authorized_keys"
+#      become: yes
+#      become_user: h4qa1
+#      become_method: sudo
+#      become_flags: "sudo su - h4qa1 /bin/bash -c"
+#
+#    - name: Add id_rsa of h4qa1 in e2e_sever to VM
+#      shell: "echo ssh-rsa rsakey_is_deleted_here== h4qa1 >> .ssh/authorized_keys"
+#      become: yes
+#      become_user: h4qa1
+#      become_method: sudo
+#      become_flags: "sudo su - h4qa1 /bin/bash -c"
+#
+#    - name: Disable SELINUX
+#      lineinfile:
+#        path: /etc/selinux/config
+#        state: present
+#        regexp: '^SELINUX='
+#        line: 'SELINUX=disabled'
+#      become: yes
+#
+### EL6
+###wget --content-disposition https://packagecloud.io/imeyer/runit/packages/el/6/runit-2.1.2-1.el6.x86_64.rpm/download.rpm
+##    - name: Download runit El6
+##      get_url:
+##        url:  https://packagecloud.io/imeyer/runit/packages/el/6/runit-2.1.2-1.el6.x86_64.rpm/download.rpm
+##        dest: /home/tetter/
+##
+##    - name: install runit
+##      shell: "yum install -y runit-2.1.2-1.el6.x86_64.rpm"
+##      become: yes
+
+### EL7
+###wget --content-disposition https://packagecloud.io/imeyer/runit/packages/el/7/runit-2.1.2-3.el7.centos.x86_64.rpm/download.rpm
+#    - name: Download runit EL7
+#      get_url:
+#        url:  https://packagecloud.io/imeyer/runit/packages/el/7/runit-2.1.2-3.el7.centos.x86_64.rpm/download.rpm
+#        dest: /home/tetter/
+#
+#    - name: install runit
+#      shell: "yum install -y runit-2.1.2-3.el7.centos.x86_64.rpm"
+#      become: yes
+## confirm with which sv
+##[h4qa1@b14-oraclelinux64-vlan732-eth000 ~]$ which sv
+## /sbin/sv
+#
+    - name: link runit path
+      file:
+        src: '{{ item.src }}'
+        dest: '{{ item.dest }}'
+        state: link
+      with_items:
+        - { src: '/sbin/runsvdir-start', dest: '/bin/runsvdir-start' }
+        - { src: '/sbin/runsvdir', dest: '/bin/runsvdir' }
+        - { src: '/sbin/runsvchdir', dest: '/bin/runsvchdir' }
+        - { src: '/sbin/runsv', dest: '/bin/runsv ' }
+        - { src: '/sbin/runit-init', dest: '/bin/runit-init' }
+        - { src: '/sbin/runit', dest: '/bin/runit' }
+        - { src: '/sbin/runuser', dest: '/bin/runuser' }
+        - { src: '/sbin/runlevel', dest: '/bin/runlevel' }
+        - { src: '/sbin/svlogd', dest: '/bin/svlogd' }
+        - { src: '/sbin/sv', dest: '/bin/sv' }
+      become: yes
