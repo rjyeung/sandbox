@@ -38,7 +38,7 @@ RAILS_ENV=test bundle exec rake e2e:scale_server
 
 # Step 2: Run workers in parallel
 echo "====================== STEP 2: Run workers in parallel ======================"
-USERNAME=tetter
+USERNAME=$TET_USER
 HOSTLIST="10.4.66.61 10.4.66.62"
 for HOSTNAME in $HOSTLIST; do
   (
