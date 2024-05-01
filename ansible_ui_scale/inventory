@@ -1,0 +1,202 @@
+vm1 ansible_ssh_host=10.4.82.1
+vm2 ansible_ssh_host=10.4.82.2
+vm3 ansible_ssh_host=10.4.82.3
+vm4 ansible_ssh_host=10.4.82.4
+vm5 ansible_ssh_host=10.4.82.5
+vm6 ansible_ssh_host=10.4.82.6
+vm7 ansible_ssh_host=10.4.82.7
+vm8 ansible_ssh_host=10.4.82.8
+vm9 ansible_ssh_host=10.4.82.9
+vm10 ansible_ssh_host=10.4.82.10
+vm11 ansible_ssh_host=10.4.82.11
+vm12 ansible_ssh_host=10.4.82.12
+vm13 ansible_ssh_host=10.4.82.13
+vm14 ansible_ssh_host=10.4.82.14
+vm15 ansible_ssh_host=10.4.82.15
+vm16 ansible_ssh_host=10.4.82.16
+vm17 ansible_ssh_host=10.4.82.17
+vm18 ansible_ssh_host=10.4.82.18
+vm19 ansible_ssh_host=10.4.82.19
+vm20 ansible_ssh_host=10.4.82.20
+vm21 ansible_ssh_host=10.4.82.21
+vm22 ansible_ssh_host=10.4.82.22
+vm23 ansible_ssh_host=10.4.82.23
+vm24 ansible_ssh_host=10.4.82.24
+vm25 ansible_ssh_host=10.4.82.25
+vm26 ansible_ssh_host=10.4.82.26
+vm27 ansible_ssh_host=10.4.82.27
+vm28 ansible_ssh_host=10.4.82.28
+vm29 ansible_ssh_host=10.4.82.29
+vm30 ansible_ssh_host=10.4.82.30
+vm31 ansible_ssh_host=10.4.82.31
+vm32 ansible_ssh_host=10.4.82.32
+vm33 ansible_ssh_host=10.4.82.33
+vm34 ansible_ssh_host=10.4.82.34
+vm35 ansible_ssh_host=10.4.82.35
+vm36 ansible_ssh_host=10.4.82.36
+vm37 ansible_ssh_host=10.4.82.37
+vm38 ansible_ssh_host=10.4.82.38
+vm39 ansible_ssh_host=10.4.82.39
+vm40 ansible_ssh_host=10.4.82.40
+vm41 ansible_ssh_host=10.4.82.41
+vm42 ansible_ssh_host=10.4.82.42
+vm43 ansible_ssh_host=10.4.82.43
+vm44 ansible_ssh_host=10.4.82.44
+vm45 ansible_ssh_host=10.4.82.45
+vm46 ansible_ssh_host=10.4.82.46
+vm47 ansible_ssh_host=10.4.82.47
+vm48 ansible_ssh_host=10.4.82.48
+vm49 ansible_ssh_host=10.4.82.49
+vm50 ansible_ssh_host=10.4.82.50
+vm51 ansible_ssh_host=10.4.82.51
+vm52 ansible_ssh_host=10.4.82.52
+vm53 ansible_ssh_host=10.4.82.53
+vm54 ansible_ssh_host=10.4.82.54
+vm55 ansible_ssh_host=10.4.82.55
+vm56 ansible_ssh_host=10.4.82.56
+vm57 ansible_ssh_host=10.4.82.57
+vm58 ansible_ssh_host=10.4.82.58
+vm59 ansible_ssh_host=10.4.82.59
+vm60 ansible_ssh_host=10.4.82.60
+vm61 ansible_ssh_host=10.4.82.61
+vm62 ansible_ssh_host=10.4.82.62
+vm63 ansible_ssh_host=10.4.82.63
+vm64 ansible_ssh_host=10.4.82.64
+vm65 ansible_ssh_host=10.4.82.65
+vm66 ansible_ssh_host=10.4.82.66
+vm67 ansible_ssh_host=10.4.82.67
+vm68 ansible_ssh_host=10.4.82.68
+vm69 ansible_ssh_host=10.4.82.69
+vm70 ansible_ssh_host=10.4.82.70
+vm71 ansible_ssh_host=10.4.82.71
+vm72 ansible_ssh_host=10.4.82.72
+vm73 ansible_ssh_host=10.4.82.73
+vm74 ansible_ssh_host=10.4.82.74
+vm75 ansible_ssh_host=10.4.82.75
+vm76 ansible_ssh_host=10.4.82.76
+vm77 ansible_ssh_host=10.4.82.77
+vm78 ansible_ssh_host=10.4.82.78
+vm79 ansible_ssh_host=10.4.82.79
+vm80 ansible_ssh_host=10.4.82.80
+vm81 ansible_ssh_host=10.4.82.81
+vm82 ansible_ssh_host=10.4.82.82
+vm83 ansible_ssh_host=10.4.82.83
+vm84 ansible_ssh_host=10.4.82.84
+vm85 ansible_ssh_host=10.4.82.85
+vm86 ansible_ssh_host=10.4.82.86
+vm87 ansible_ssh_host=10.4.82.87
+vm88 ansible_ssh_host=10.4.82.88
+vm89 ansible_ssh_host=10.4.82.89
+vm90 ansible_ssh_host=10.4.82.90
+vm91 ansible_ssh_host=10.4.82.91
+vm92 ansible_ssh_host=10.4.82.92
+vm93 ansible_ssh_host=10.4.82.93
+vm94 ansible_ssh_host=10.4.82.94
+vm95 ansible_ssh_host=10.4.82.95
+vm96 ansible_ssh_host=10.4.82.96
+vm97 ansible_ssh_host=10.4.82.97
+vm98 ansible_ssh_host=10.4.82.98
+vm99 ansible_ssh_host=10.4.82.99
+vm100 ansible_ssh_host=10.4.82.100
+
+[uiscaleslaves]
+#vm1
+#vm2
+#vm3
+#vm4
+vm5
+vm6
+vm7
+vm8
+vm9
+vm10
+vm11
+vm12
+vm13
+vm14
+vm15
+vm16
+vm17
+vm18
+vm19
+vm20
+vm21
+vm22
+vm23
+vm24
+vm25
+vm26
+vm27
+vm28
+vm29
+vm30
+vm31
+vm32
+vm33
+vm34
+vm35
+vm36
+vm37
+vm38
+vm39
+vm40
+vm41
+vm42
+vm43
+vm44
+vm45
+vm46
+vm47
+vm48
+vm49
+vm50
+vm51
+vm52
+vm53
+vm54
+vm55
+vm56
+vm57
+vm58
+vm59
+vm60
+vm61
+vm62
+vm63
+vm64
+vm65
+vm66
+vm67
+vm68
+vm69
+vm70
+vm71
+vm72
+vm73
+vm74
+vm75
+vm76
+vm77
+vm78
+vm79
+vm80
+vm81
+vm82
+vm83
+vm84
+vm85
+vm86
+vm87
+vm88
+vm89
+vm90
+vm91
+vm92
+vm93
+vm94
+vm95
+vm96
+vm97
+vm98
+vm99
+vm100

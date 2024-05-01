@@ -1,0 +1,25 @@
+1. Setup password-free ssh login to target VMs (Ref: http://www.linuxproblem.org/art_9.html)
+Ansible Control Server = b19scale-server-ui (172.31.163.80)
+Target VMs = 10.4.82.1 - 10.4.82.100
+From ACS do the following
+```sh-keygen -t rsa
+   (Do the following for all target VMs)
+   sshpass -p $TET_SUPERPASSWORD ssh -o StrictHostKeyChecking=no $TET_USER@10.4.82.11 'mkdir -p .ssh'
+   cat ~/.ssh/id_rsa.pub | sshpass -p $TET_SUPERPASSWORD ssh -o StrictHostKeyChecking=no $TET_USER@10.4.82.11 'cat >> .ssh/authorized_keys'
+   # ssh $TET_USER@10.4.82.1 mkdir -p .ssh
+   # cat .ssh/id_rsa.pub | ssh $TET_USER@10.4.82.1 'cat >> .ssh/authorized_keys'
+```
+2. Slave VM does not have outside access, so need to obtain proxy gateway ip and update .bashrc and .ssh/config file (See first 2 tasks in ui_scale.yml)
+
+3. Certain ansible module does not work well (e.g. apt-get module).  Hence use ui_scale_pre_ansible.sh to do them (specify ip range, and run `bash ui_scale_pre_ansible.sh`
+
+4. Run playbook as below.  (Tasks are commented out as I run each one one after another.) If need to get node.js, recommend to update /etc/sudoers with nopasswd option.
+
+============================================================
+To run playbook login as $TET_USER in controler
+If slave VM's /etc/sudoers file already has `$TET_USER ALL=(ALL) NOPASSWD: ALL`
+then 
+  run playbook with `ansible-playbook -i inventory ui_scale.yml -vvv`
+else 
+  run playbook with `ansible-playbook -i inventory ui_scale.yml -vvv --extra-vars "ansible_become_pass=$TET_SUPERPASSWORD"`
+

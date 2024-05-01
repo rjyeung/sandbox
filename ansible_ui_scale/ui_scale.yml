@@ -1,0 +1,97 @@
+---
+- hosts: uiscaleslaves
+
+  vars:
+    jenkins_user: tetter
+    jenkins_group: tetter
+    python_lib_url: https://artifacts.tet.wtf/api/pypi/pypi/simple
+    jumper_ip: 172.31.163.58
+
+  environment:
+    http_proxy: http://172.31.163.58:3128
+    https_proxy: http://172.31.163.58:3128
+
+#  become: yes
+
+  tasks:
+#    - name: Configure jumper in bashrc file for tetter user (root should already have it)
+#      blockinfile:
+#        dest: /home/{{ jenkins_user }}/.bashrc
+#        block: |
+#          export http_proxy=http://{{ jumper_ip }}:3128
+#          export https_proxy=http://{{ jumper_ip }}:3128
+#        state: present
+#        backup: yes
+#        #become: yes
+#
+#    - name: Configure jumper in .ssh/config file
+#      blockinfile:
+#        dest: /home/{{ jenkins_user }}/.ssh/config
+#        block: |
+#          Host github.com
+#          Hostname ssh.github.com
+#          Port 443
+#          IdentityFile ~/.ssh/jenkin_rsa
+#          ProxyCommand corkscrew {{ jumper_ip }} 3128 %h %p
+#
+#          Host *
+#              StrictHostKeyChecking no
+#        state: present
+#        create: yes
+#        backup: yes
+#
+#    - name: Create jenkins workspace directory
+#      file: path=/local/jenkins state=directory owner={{ jenkins_user }} group={{ jenkins_group }}
+#      become: yes
+#
+#    - name: Make /tmp/screenshots directory
+#      file: path=/tmp/screenshots state=directory mode=0777
+#
+#    #- name: Ansible apt with_items example (Manual, move to seperate shell script?)
+#    #   apt:
+#    #     name: "{{ item }}"
+#    #     update_cache: true
+#    #     state: present
+#    #   with_items:
+#    #   #  - 'git'
+#    #     - 'corkscrew'
+#    #     - 'xvfb'
+#    #   #  - 'curl'
+#    #   become: yes
+#
+#    - name: Copy jenkin_rsa file for git clone UI repro
+#      copy:
+#        src: jenkin_rsa
+#        dest: /home/{{ jenkins_user }}/.ssh/jenkin_rsa
+#        mode: 0600
+#
+#    - name: Git clone UI repro   (trouble with git module, ?corkscrew install)
+#      shell: git clone git@github.com:TetrationAnalytics/ui.git
+#
+#    - name: Get nodejs
+#      shell: curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+#
+#    - name: Install nodejs (https://github.com/geerlingguy/ansible-role-nodejs)
+#      shell: apt-get install -y nodejs
+#      become: yes
+#
+#    #- name: apt install npm (have unmet depndencies)
+#    #  apt: name=npm
+#    #  become: yes
+#
+#    - name: npm install
+#      shell: cd ui/spec/angular && npm install
+#
+#    - name: webdriver update
+#      shell: cd ui/spec/angular/node_modules/protractor && node ./node_modules/webdriver-manager update --versions.chrome 2.29
+#
+#    - name: Download Google Chrome
+#      shell: wget https://artifacts.tet.wtf/tools-qa-local/chrome64_57.0.2987.133.deb -O /tmp/google-chrome-57.0.2987.133.deb
+#
+#    - name: Fix any missing google-chrome-stable dependencies
+#      shell: apt-get install -f -y
+#      become: yes
+#
+    - name: dpkg Chrome
+      command: dpkg -i /tmp/google-chrome-57.0.2987.133.deb   
+      become: yes
