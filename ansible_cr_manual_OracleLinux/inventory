@@ -14,7 +14,7 @@ vm75 ansible_ssh_host=10.32.2.82
 vm76 ansible_ssh_host=10.32.2.75
 [all:vars]
 ansible_connection=ssh
-ansible_user=tetter
+ansible_user=TET_USER
 ansible_ssh_pass=TET_SUPERPASSWORD
 #ansible_python_interpreter=/usr/bin/python2.6
 
